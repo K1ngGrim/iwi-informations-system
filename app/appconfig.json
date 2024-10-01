@@ -1,0 +1,10 @@
+{
+  "name": "iwi-information-system",
+  "version": "1.0",
+  "override-config": true,
+  "allowed-files": [
+    ".png", ".jpg", ".jpeg", ".gif", ".bmp"
+  ],
+  "folder": "../res/advertising"
+
+}

@@ -1,0 +1,22 @@
+{
+    "files": [
+        {
+            "name": "Getraenke_Kuehlschrank.png",
+            "duration": 30,
+            "upload_date": "2024-10-01",
+            "active": true
+        },
+        {
+            "name": "O-Phasen-Zeitplan_I_WS_2024.png",
+            "duration": 30,
+            "upload_date": "2024-10-01",
+            "active": true
+        },
+        {
+            "name": "O-Phasen-Zeitplan_WI_WS_2024.png",
+            "duration": 30,
+            "upload_date": "2024-10-01",
+            "active": true
+        }
+    ]
+}
