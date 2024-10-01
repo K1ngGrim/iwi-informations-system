@@ -1,14 +1,34 @@
 import json
-import re
-from pathlib import Path
 import os
+import re
 from datetime import datetime
-from app.models.file import File
-from app.services.base_service import BaseFactory
-from app.services.log_service import LogServiceFactory
+from pathlib import Path
+from typing import TypeVar, Generic
 
-"""Singleton Service to update and save the config file"""
+from file import File
 
+T = TypeVar('T')
+
+
+class BaseFactory(Generic[T]):
+    _instance = None
+
+    @classmethod
+    def get_instance(cls) -> T:
+        if cls._instance is None:
+            cls._instance = cls.create_instance()
+
+        return cls._instance
+
+    @classmethod
+    def create_instance(cls) -> T:
+        raise NotImplementedError("Die Methode create_instance() muss in der Unterklasse implementiert werden.")
+
+
+class BaseService:
+
+    def __init__(self):
+        pass
 
 class ConfigService:
     pattern = re.compile(r'appconfig.*\.json')
@@ -123,3 +143,25 @@ class ConfigServiceFactory(BaseFactory[ConfigService]):
     @classmethod
     def create_instance(cls) -> ConfigService:
         return ConfigService()
+
+class LogService(BaseService):
+
+    @staticmethod
+    def Info(info: str):
+        print("[INFO] ", info)
+
+    @staticmethod
+    def Error(err: str):
+        print("[ERROR] ", err)
+
+
+
+class LogServiceFactory(BaseFactory[LogService]):
+
+    @classmethod
+    def get_instance(cls) -> LogService:
+        return super().get_instance()
+
+    @classmethod
+    def create_instance(cls) -> LogService:
+        return LogService()
