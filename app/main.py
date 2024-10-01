@@ -1,13 +1,11 @@
-import os
 import tkinter as tk
-from PIL import ImageTk
-from PIL import Image
-from app.services.config_service import ConfigServiceFactory
+from PIL import ImageTk, Image
+from services import *
 
 
 class FullscreenImageViewer:
     def __init__(self, root):
-        self.config_service = ConfigServiceFactory.get_instance()
+        self.config_service = config_service.ConfigServiceFactory.get_instance()
 
         self.images = self.config_service.get_value("files")
         self.folder_path = self.config_service.get_value("folder")

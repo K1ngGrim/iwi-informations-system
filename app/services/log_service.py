@@ -1,5 +1,4 @@
 from app.services.base_service import BaseFactory, BaseService
-import logging
 
 class LogService(BaseService):
 
